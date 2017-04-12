@@ -1,0 +1,46 @@
+version: '2'
+services:
+ magicscrape:
+  image: magicplatform/magicscrape
+  container_name: magicscrape
+  #ports:
+  # - "142.54.186.58:80:80"
+  # - "142.54.186.58:443:443"
+  environment:
+   - TZ=PST8PDT
+  restart: always
+  networks:
+   - proxy
+  links:
+   - redis
+
+ magicapi:
+  image: magicplatform/magicapi
+  container_name: magicapi
+  ports:
+    - "192.168.1.1:8888:8888"
+  # - "142.54.186.58:443:443"
+  environment:
+   - TZ=PST8PDT
+  restart: always
+  networks:
+   - proxy
+  links:
+   - redis
+
+ redis:
+  image: magicplatform/redis
+  container_name: redis
+  ports:
+   - "192.168.1.1:6379:6379"
+  environment:
+   - TZ=PST8PDT
+  restart: always
+#  volumes:
+  networks:
+   - proxy
+
+networks:
+   proxy:
+    external:
+      name: icecrown
