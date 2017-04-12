@@ -1,0 +1,7 @@
+package: magicScrapeGo
+import:
+- package: github.com/PuerkitoBio/goquery
+- package: github.com/garyburd/redigo
+  version: ^1.0.0
+  subpackages:
+  - redis
