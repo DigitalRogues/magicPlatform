@@ -18,8 +18,7 @@ services:
   image: magicplatform/magicapi
   container_name: magicapi
   ports:
-    - "192.168.1.1:8888:8888"
-  # - "142.54.186.58:443:443"
+    - "172.31.30.131:8888:8888"
   environment:
    - TZ=PST8PDT
   restart: always
@@ -29,10 +28,10 @@ services:
    - redis
 
  redis:
-  image: magicplatform/redis
+  image: redis
   container_name: redis
   ports:
-   - "192.168.1.1:6379:6379"
+   - "172.31.30.131:6379:6379"
   environment:
    - TZ=PST8PDT
   restart: always
