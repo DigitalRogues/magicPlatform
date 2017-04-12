@@ -1,0 +1,20 @@
+version: '2'
+services:
+ magicscrapego:
+  image: magicplatform/magicscrapego
+  container_name: magicscrapego
+  #ports:
+  # - "142.54.186.58:80:80"
+  # - "142.54.186.58:443:443"
+  environment:
+    - TZ=PST8PDT
+  restart: always
+  networks:
+   - proxy
+  external_links:
+     - redis
+
+networks:
+   proxy:
+    external:
+      name: icecrown
